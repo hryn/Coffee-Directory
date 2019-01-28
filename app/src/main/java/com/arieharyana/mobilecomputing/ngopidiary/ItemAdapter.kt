@@ -1,4 +1,4 @@
-package com.arieharyana.mobilecomputing.sampleapp
+package com.arieharyana.mobilecomputing.ngopidiary
 
 import android.annotation.SuppressLint
 import android.content.Context

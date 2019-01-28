@@ -1,4 +1,4 @@
-package com.arieharyana.mobilecomputing.sampleapp
+package com.arieharyana.mobilecomputing.ngopidiary
 
 import java.io.Serializable
 

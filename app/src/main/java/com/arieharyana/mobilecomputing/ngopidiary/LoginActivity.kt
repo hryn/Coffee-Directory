@@ -1,4 +1,4 @@
-package com.arieharyana.mobilecomputing.sampleapp
+package com.arieharyana.mobilecomputing.ngopidiary
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login2)
 
-        val defaultEmail: String = "email@utama.ac.id"
+        val defaultEmail: String = "hello@utama.ac.id"
         val defaultPassword: String = "1234"
 
         btn_login.setOnClickListener{

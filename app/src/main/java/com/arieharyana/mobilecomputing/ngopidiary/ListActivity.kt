@@ -1,4 +1,4 @@
-package com.arieharyana.mobilecomputing.sampleapp
+package com.arieharyana.mobilecomputing.ngopidiary
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -37,7 +37,7 @@ class ListActivity : AppCompatActivity(){
         rv_list.visibility = View.GONE
 
         AndroidNetworking.get("https://api.flickr.com/services/feeds/photos_public.gne")
-                .addQueryParameter("tags", "coffee")
+                .addQueryParameter("tags", "cappucino")
                 .addQueryParameter("format", "json")
                 .setTag("test")
                 .setPriority(Priority.LOW)
