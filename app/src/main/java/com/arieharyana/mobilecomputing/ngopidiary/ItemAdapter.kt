@@ -61,10 +61,10 @@ class ItemAdapter(context: Context) : Adapter<ItemAdapter.Holder>() {
             val requestOptions = RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true)
-            Glide.with(this).load(item.media?.m)
+            Glide.with(this).load(item.images?.standard_resolution?.url)
                     .apply(requestOptions).into(img)
-            txt_name.text = item.title
-            txt_tags.text = item.tags
+            txt_name.text = item.tags?.get(0)
+            txt_tags.text = item.caption?.text
 
             itemView.setOnClickListener {
                 val i = Intent(context, DetailActivity::class.java)
