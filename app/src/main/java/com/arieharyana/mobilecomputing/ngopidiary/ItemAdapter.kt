@@ -46,8 +46,6 @@ class ItemAdapter(context: Context) : Adapter<ItemAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false))
 
-    //override fun onBindViewHolder(holder: Holder, position: Int) = holder.bind(models!![position])
-
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(models!![position])
     }
