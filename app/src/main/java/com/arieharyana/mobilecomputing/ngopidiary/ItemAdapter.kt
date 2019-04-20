@@ -46,6 +46,8 @@ class ItemAdapter(context: Context) : Adapter<ItemAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false))
 
+    //override fun onBindViewHolder(holder: Holder, position: Int) = holder.bind(models!![position])
+
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(models!![position])
     }
@@ -59,10 +61,10 @@ class ItemAdapter(context: Context) : Adapter<ItemAdapter.Holder>() {
             val requestOptions = RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true)
-            Glide.with(this).load(item.images?.standard_resolution?.url)
+            Glide.with(this).load(item.media?.m)
                     .apply(requestOptions).into(img)
-            txt_name.text = item.tags?.get(0)
-            txt_tags.text = item.caption?.text
+            txt_name.text = item.title
+            txt_tags.text = item.tags
 
             itemView.setOnClickListener {
                 val i = Intent(context, DetailActivity::class.java)

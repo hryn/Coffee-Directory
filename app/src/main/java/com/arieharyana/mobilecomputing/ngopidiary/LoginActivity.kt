@@ -5,15 +5,23 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import com.google.firebase.FirebaseApp
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_login2.*
+import java.io.IOException
 
 class LoginActivity : AppCompatActivity() {
+    private val TAG = "MyFirebaseToken"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login2)
+
+        FirebaseApp.initializeApp(this)
+        initView()
 
         val defaultEmail: String = "hello@utama.ac.id"
         val defaultPassword: String = "1234"
@@ -57,5 +65,17 @@ class LoginActivity : AppCompatActivity() {
         btn_signup.setOnClickListener {
 
         }
+    }
+
+
+    private fun initView() {
+        //This method will use for fetching Token
+        Thread(Runnable {
+            try {
+                Log.i(TAG, FirebaseInstanceId.getInstance().getToken(getString(R.string.SENDER_ID), "FCM"))
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }).start()
     }
 }

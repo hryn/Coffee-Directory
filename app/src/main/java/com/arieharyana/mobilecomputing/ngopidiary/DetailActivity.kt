@@ -18,16 +18,16 @@ class DetailActivity : AppCompatActivity() {
         val requestOptions = RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
-        Glide.with(this).load(data.images?.standard_resolution?.url)
+        Glide.with(this).load(data.media?.m)
                 .apply(requestOptions).into(img)
 
-        txt_name?.text = data.tags?.get(0)
-        txt_tags?.text = data.tags?.get(0)
-        txt_author?.text = data.user?.full_name
+        txt_name?.text = data.title
+        txt_tags?.text = data.tags
+        txt_author?.text = data.author
 
         wv?.settings!!.javaScriptEnabled = true
         wv?.settings!!.javaScriptCanOpenWindowsAutomatically = true
-        wv?.loadData(data.caption?.text,"text/html; charset=UTF-8", null)
+        wv?.loadData(data.description,"text/html; charset=UTF-8", null)
     }
 
 
