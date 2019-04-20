@@ -15,18 +15,26 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="50dp"
         android:ellipsize="end"
-        android:maxLines="1"
         android:gravity="center_vertical"
-        android:textColor="@color/colorPrimary"
+        android:maxLines="1"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <View
         android:layout_width="130dp"
         android:layout_height="5dp"
         android:layout_marginLeft="27dp"
         android:layout_marginRight="50dp"
-        android:background="@drawable/bg_grey"/>
+        android:background="@color/blueGrey700" />
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.arieharyana.mobilecomputing.ngopidiary.Banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

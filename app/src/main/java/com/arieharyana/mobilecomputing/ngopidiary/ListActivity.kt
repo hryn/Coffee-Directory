@@ -2,6 +2,7 @@ package com.arieharyana.mobilecomputing.ngopidiary
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -13,12 +14,15 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.interfaces.OkHttpResponseAndStringRequestListener
 import okhttp3.Response
-
+import java.util.*
 
 class ListActivity : AppCompatActivity(){
 
     private val TAG = ListActivity::class.java.simpleName
     private lateinit var adapter: ItemAdapter
+    private val mNotificationTime = Calendar.getInstance().timeInMillis + 10000 //Set after 5 seconds from the current time.
+    private var mNotified = false
+
 
 
     @SuppressLint("CheckResult")
@@ -26,6 +30,18 @@ class ListActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_chat)
 
+        if (!mNotified) {
+            NotificationUtils().setNotification(mNotificationTime, this@ListActivity)
+        }
+
+        val intent = intent
+        val message = intent.getStringExtra("message")
+        if(!message.isNullOrEmpty()) {
+            AlertDialog.Builder(this)
+                    .setTitle("Notification")
+                    .setMessage(message)
+                    .setPositiveButton("Ok", { dialog, which -> }).show()
+        }
 
         rv_list?.layoutManager = LinearLayoutManager(this)
         rv_list?.setHasFixedSize(true)
